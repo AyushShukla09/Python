@@ -26,9 +26,22 @@ def normal_to_military_time(s):
             return s[0:-2]
 
 
+def normal_to_military_time_2(s):
+    if s[-2:] == "PM":
+        if s[0:2] == "12":
+            return s[0:len(s) - 2]
+        return str(int(s[0:2]) + 12) + s[2:len(s) - 2]
+
+    else:
+        if s[0:2] == "12":
+            s = "00" + s[2:]
+        return s[0:len(s) - 2]
+
+
 if __name__ == '__main__':
     s1 = '12:01:00AM'
     s2 = '12:01:00PM'
     s3 = '04:12:59AM'
     s4 = '04:12:59PM'
     print(normal_to_military_time(s4))
+    print(normal_to_military_time_2(s3))
